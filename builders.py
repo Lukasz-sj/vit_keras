@@ -23,12 +23,12 @@ class VitBuilder():
 
         vit_model = keras.Model(input_layer, output)
 
-        if load_pretrain:
-            self.load_pretrain(vit_model)
+        if self.load_pretrain:
+            self.load_pretrain_weights(vit_model)
 
         return vit_model
 
-    def load_pretrain(self, vit):
+    def load_pretrain_weights(self, vit):
         with gfile.GFile('ViT-B_16_imagenet2012.npz', 'rb') as f:
             ckpt_dict = np.load(f, allow_pickle=False)
 
