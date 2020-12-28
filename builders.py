@@ -42,7 +42,7 @@ class VitBuilder():
             if 'Transformer/posembed_input/embedding/bias:0' == layer.name:
                 layer.assign(ckpt_dict['embedding/bias'])
 
-        for i in range(12):
+        for i in range(self.num_layers):
             for layer in vit.get_layer(f'Transformer/encoderblock_{i}').trainable_weights:
                 for k in [0, 2]:
                     if layer.name.endswith(f'/LayerNorm_{k}/gamma:0'):
