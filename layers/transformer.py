@@ -4,10 +4,11 @@ from tensorflow import keras
 from tensorflow.keras.layers import Dense
 from tensorflow.keras.layers import Dropout, Conv2D
 from tensorflow.keras.layers import LayerNormalization
-from vit_keras.layers import MultiHeadAttention, MLPLayer
+from vit_keras.layers.tensorflow_addon import MultiHeadAttention
 
 
 class MLPLayer(keras.layers.Layer):
+
     def __init__(self, image_size, patch_size):
         super(MLPLayer, self).__init__()
         p = patch_size
@@ -63,6 +64,7 @@ class TransformerInputConv2DLayer(keras.layers.Layer):
 
 
 class TransformerEncoderLayer(keras.layers.Layer):
+
     def __init__(self, name, image_size, patch_size, num_heads):
         super(TransformerEncoderLayer, self).__init__(name=name)
         p = patch_size
