@@ -1,5 +1,5 @@
 from tensorflow.keras.layers import LayerNormalization, Dropout
-from layers import MultiHeadAttention, MLPLayer
+from vit_keras.layers import MultiHeadAttention, MLPLayer
 
 
 class TransformerEncoderLayer(keras.layers.Layer):
