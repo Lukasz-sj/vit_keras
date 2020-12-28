@@ -14,7 +14,7 @@ class VitBuilder():
         self.load_pretrain = load_pretrain
 
     def build(self):
-        input_layer = Input(shape=image_size, batch_size=1)
+        input_layer = Input(shape=self.image_size, batch_size=1)
         x = TransformerInputConv2DLayer(self.image_size, self.patch_size)(input_layer)
         for i in range(self.num_layers):
             x = TransformerEncoderLayer(f'Transformer/encoderblock_{i}', self.image_size, self.patch_size, self.num_heads)(x)
