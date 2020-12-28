@@ -1,4 +1,4 @@
-from tensorflow.keras.layers import LayerNormalization, Dropout
+from tensorflow.keras.layers import LayerNormalization, Dropout, Layer
 from vit_keras.layers import MultiHeadAttention, MLPLayer
 
 

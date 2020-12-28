@@ -1,5 +1,5 @@
 from tensorflow import keras
-from tensorflow.keras.layers import Dense, Input, Dropout, Conv2D
+from tensorflow.keras.layers import Dense, Input, Dropout, Conv2D, Layer
 import tensorflow_addons as tfa
 
 
