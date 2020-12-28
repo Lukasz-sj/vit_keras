@@ -1,6 +1,6 @@
 from tensorflow import keras
 from tensorflow.keras.layers import Dense, Input, LayerNormalization
-from vit_keras.layers import TransformerEncoderLayer, TransformerInputConv2DLayer
+from vit_keras.layers.transformer import TransformerEncoderLayer, TransformerInputConv2DLayer
 
 class VitBuilder():
     def __init__(self, image_size=(384, 384, 3), patch_size=16, num_heads=12, num_layers=12, num_classes=1000):
