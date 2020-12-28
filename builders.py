@@ -14,7 +14,7 @@ class VitBuilder():
         self.load_pretrain = load_pretrain
 
     def build(self):
-        input_layer = Input(shape=(384, 384, 3), batch_size=1)
+        input_layer = Input(shape=image_size, batch_size=1)
         x = TransformerInputConv2DLayer(self.image_size, self.patch_size)(input_layer)
         for i in range(self.num_layers):
             x = TransformerEncoderLayer(f'Transformer/encoderblock_{i}', self.image_size, self.patch_size, self.num_heads)(x)
@@ -24,7 +24,7 @@ class VitBuilder():
         vit_model = keras.Model(input_layer, output)
 
         if self.load_pretrain:
-            self.load_pretrain_weights(vit_model)
+            vit_model = self.load_pretrain_weights(vit_model)
 
         return vit_model
 
@@ -75,3 +75,5 @@ class VitBuilder():
                 layer.assign(ckpt_dict['head/kernel'])
             if 'head/bias:0' == layer.name:
                 layer.assign(ckpt_dict['head/bias'])
+
+        return vit
