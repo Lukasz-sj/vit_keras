@@ -1,6 +1,6 @@
 import tensorflow as tf
 from tensorflow import keras
-from tensorflow.keras.layers import Dense, Input, Dropout, Conv2D, Layer
+from tensorflow.keras.layers import Dropout, Conv2D
 
 
 class TransformerInputConv2DLayer(keras.layers.Layer):
