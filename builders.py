@@ -5,16 +5,23 @@ from tensorflow.io import gfile
 import numpy as np
 
 class VitBuilder():
-    def __init__(self, image_size=(384, 384, 3), patch_size=16, num_heads=12, num_layers=12, num_classes=1000, load_pretrain=True):
+    def __init__(self, image_size=(384, 384, 3),
+                 patch_size=16,
+                 num_heads=12,
+                 num_layers=12,
+                 num_classes=1000,
+                 load_pretrain=True,
+                 batch_size=1):
         self.image_size = image_size
         self.patch_size = patch_size
         self.num_heads = num_heads
         self.num_layers = num_layers
         self.num_classes = num_classes
         self.load_pretrain = load_pretrain
+        self.batch_size = batch_size
 
     def build(self):
-        input_layer = Input(shape=self.image_size, batch_size=1)
+        input_layer = Input(shape=self.image_size, batch_size=self.batch_size)
         x = TransformerInputConv2DLayer(self.image_size, self.patch_size)(input_layer)
         for i in range(self.num_layers):
             x = TransformerEncoderLayer(f'Transformer/encoderblock_{i}', self.image_size, self.patch_size, self.num_heads)(x)
